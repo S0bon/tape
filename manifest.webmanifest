@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "Tape — MMA Training Log",
+  "short_name": "Tape",
+  "description": "Post-training log for MMA: sessions, sparring, technique ladder, grades and competitions.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e0e10",
+  "theme_color": "#0e0e10",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
