@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e0e10">
+<meta name="description" content="Post-training log for MMA: sessions, sparring, technique ladder, grades and competitions.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Tape</title>
+<style>
+:root{--bg:#0e0e10;--panel:#17171b;--panel2:#202027;--line:#2c2c35;--text:#f3f1ec;--muted:#9b988f;--dim:#6f6c66;--accent:#ff4d2e;--ink:#1a0703;--amber:#f5b301;--good:#3ddc84;--bad:#ff6b5a;--r:14px;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text)}
+body{font:16px/1.4 system-ui,-apple-system,Roboto,"Segoe UI",sans-serif;padding-bottom:calc(72px + env(safe-area-inset-bottom));overscroll-behavior-y:contain}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.h{font-family:"Roboto Condensed","sans-serif-condensed","Arial Narrow",system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+header.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:rgba(14,14,16,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{font-size:24px;letter-spacing:.1em}.brand b{color:var(--accent)}
+.iconbtn{background:none;border:0;padding:8px;margin:-8px;color:var(--muted)}
+.iconbtn svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+main{padding:8px 16px 28px;max-width:640px;margin:0 auto}
+.title{font-size:28px;margin:12px 0 4px}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.wrap{flex-wrap:wrap}
+.mt{margin-top:10px}
+.sec{margin:22px 0 8px;color:var(--muted);font-size:13px}
+.hint{text-transform:none;letter-spacing:0;font-weight:400;font-family:system-ui,sans-serif;color:var(--dim);margin-left:6px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:0 15px;min-height:44px;font-size:15px}
+.chip.sm{min-height:36px;padding:0 12px;font-size:14px}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--ink);font-weight:600}
+.tchip{padding:0 2px 0 0}
+.tchip .cb{background:none;border:0;padding:0 6px 0 12px;min-height:36px;color:inherit}
+.tchip.drilled{background:var(--amber);border-color:var(--amber);color:#1c1400;font-weight:600}
+.x{background:none;border:0;color:inherit;opacity:.7;font-size:22px;line-height:1;padding:4px 8px}
+.dateinp{color-scheme:dark}
+.inp{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:11px 14px;min-height:46px;outline:none}
+.inp:focus{border-color:#5a5761}
+textarea.inp{resize:vertical}
+select.inp{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239b988f' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.chips .dateinp{width:auto;min-height:44px;border-radius:999px;padding:0 12px}
+.sug{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.sug button{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 14px}
+.sug .m{color:var(--muted);font-size:13px;margin-left:8px}
+.sug .new{border-style:dashed;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:0 16px;min-height:46px;font-weight:600;white-space:nowrap}
+.btn.sm{min-height:38px;padding:0 12px;font-size:14px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.btn.ghost{background:none}
+.btn.outline{background:none;border-style:dashed;color:var(--muted)}
+.btn.danger{background:none;border-color:#5a2a26;color:var(--bad)}
+.btn.block{display:flex;width:100%}.btn.big{min-height:56px;font-size:18px}
+.savebar{position:fixed;left:0;right:0;bottom:calc(62px + env(safe-area-inset-bottom));z-index:4;padding:14px 16px 8px;background:linear-gradient(rgba(14,14,16,0),var(--bg) 40%);max-width:640px;margin:0 auto}
+main.haspad{padding-bottom:110px}
+.savebar .btn{box-shadow:0 10px 28px rgba(0,0,0,.6)}
+.stepper{display:inline-flex;align-items:center;gap:2px;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:3px}
+.stepper .lbl{padding:0 4px 0 10px}
+.sb{width:38px;height:38px;border-radius:50%;border:0;background:#2c2c35;font-size:20px;line-height:1;flex:none}
+.num{min-width:44px;text-align:center;font-size:18px}
+.spar{border-left:3px solid var(--accent)}
+.mets{display:grid;gap:8px;margin-top:12px}
+.met{background:var(--panel2);border-radius:12px;padding:10px}
+.met>.lbl{font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cnt{display:flex;flex-direction:column;align-items:center;gap:4px}
+.cl{font-size:12px;color:var(--muted)}
+.cnt.for .cl{color:var(--good)}.cnt.against .cl{color:var(--bad)}
+.cr{display:flex;align-items:center;gap:6px}
+.cv{min-width:30px;text-align:center;font-size:22px}
+.vin{width:84px;text-align:center;font-size:20px;padding:6px}
+.switch{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+.switch input{width:22px;height:22px;accent-color:var(--accent);flex:none}
+.lbl{font-size:13px;color:var(--muted)}
+.banner{display:block;width:100%;text-align:left;background:#2a1f0a;border:1px solid #5c4410;color:var(--amber);border-radius:12px;padding:10px 14px;margin-top:10px;font-size:14px}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:6;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(18,18,21,.97);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs button{background:none;border:0;color:var(--muted);padding:9px 0 10px;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:600;letter-spacing:.03em}
+nav.tabs svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button.on{color:var(--text)}nav.tabs button.on svg{stroke:var(--accent)}
+.wkh{display:flex;justify-content:space-between;margin:22px 2px 8px;color:var(--muted);font-size:13px}
+.srow{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin-bottom:8px}
+.sbtn{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 14px}
+.srow .top{display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.meta{color:var(--muted);font-size:14px;margin-top:4px}
+.sline{font-size:14px;margin-top:6px;font-variant-numeric:tabular-nums}
+.sline b{color:var(--good)}.sline i{color:var(--bad);font-style:normal;font-weight:700}
+.sx{padding:0 14px 12px}
+.note{font-size:14px;color:var(--text);background:var(--panel2);border-radius:10px;padding:8px 12px;margin-bottom:8px}
+.pips{display:flex;gap:3px}.pips span{width:14px;height:6px;border-radius:2px;background:#34343d}.pips span.f{background:var(--accent)}
+.pips.big span{width:100%;height:8px}
+.trow{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:6px}
+.trow .s{color:var(--muted);font-size:13px}
+.ladcol{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.kpi .v{font-size:30px;line-height:1.1}.kpi .k{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;gap:4px}
+.ladder .v{font-size:26px}.ladder .k{font-size:11px;color:var(--muted)}
+.chart{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--c);margin-right:5px;vertical-align:-1px}
+table.t{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin-top:8px}
+table.t th{color:var(--muted);font-weight:500;text-align:right;padding:6px 4px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+table.t td{text-align:right;padding:8px 4px;border-top:1px solid var(--line)}
+table.t th:first-child,table.t td:first-child{text-align:left}
+.pos{color:var(--good)}.neg{color:var(--bad)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--panel2);border-radius:12px;padding:4px;margin:10px 0 14px}
+.seg button{border:0;background:none;padding:10px;border-radius:9px;color:var(--muted);font-weight:600}
+.seg button.on{background:var(--panel);color:var(--text)}
+.grade{font-size:30px;margin:2px 0}
+.hrow{display:flex;justify-content:space-between;width:100%;background:none;border:0;border-top:1px solid var(--line);padding:10px 0 2px;margin-top:8px;text-align:left}
+.cbtn{display:block;width:100%;text-align:left}
+.res{display:inline-block;width:22px;text-align:center;border-radius:4px;font-weight:700;font-size:12px;margin-right:4px}
+.res.W{background:#173d27;color:var(--good)}.res.L{background:#3d1a17;color:var(--bad)}.res.D{background:#2f2f37}
+.empty{text-align:center;color:var(--muted);padding:36px 10px;line-height:1.5}
+#sheet{position:fixed;inset:0;z-index:20;pointer-events:none}
+#sheet .scrim{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .2s}
+#sheet .panel{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:#141418;border-top:1px solid var(--line);border-radius:20px 20px 0 0;padding:8px 16px calc(28px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .25s ease;max-width:640px;margin:0 auto}
+#sheet.open{pointer-events:auto}#sheet.open .scrim{opacity:1}#sheet.open .panel{transform:none}
+.grab{width:40px;height:4px;border-radius:2px;background:#3a3a44;margin:4px auto 6px}
+.field{margin-bottom:12px}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.stats p{margin:6px 0;font-size:14px}
+#toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:var(--text);color:#111;padding:10px 18px;border-radius:999px;font-weight:600;opacity:0;transition:all .2s;z-index:30;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand h">Tape<b>.</b></div>
+  <button class="iconbtn" data-act="settings" aria-label="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+</header>
+<main id="main"></main>
+<nav class="tabs">
+  <button data-act="tab" data-arg="log"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Log</button>
+  <button data-act="tab" data-arg="hist"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg>History</button>
+  <button data-act="tab" data-arg="lib"><svg viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/></svg>Library</button>
+  <button data-act="tab" data-arg="stats"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Stats</button>
+  <button data-act="tab" data-arg="rec"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13.2 7.5 21l4.5-2.6 4.5 2.6-1.5-7.8"/></svg>Record</button>
+</nav>
+<div id="sheet"><div class="scrim" data-act="closeSheet"></div><div class="panel"><div class="grab"></div><div class="body"></div></div></div>
+<div id="toast"></div>
+<script>
+'use strict';
+/* ---------- constants ---------- */
+const KEY='tape.v1', DKEY='tape.draft';
+const SPAR_TYPES=['Striking','Wrestling','Grappling','MMA'];
+// key: [label, forKey, againstKey, forLabel, againstLabel, short]
+const MET={
+  td:['Takedowns','tdL','tdC','Landed','Conceded','TD'],
+  sub:['Submissions','subF','subT','Finished','Tapped','Sub'],
+  kd:['Knockdowns','kdG','kdT','Given','Taken','KD'],
+  stop:['Coach stoppages','stG','stT','Forced','Suffered','Stop'],
+  vid:['Strikes · counted from video','strL','strA','Landed','Absorbed','Str']
+};
+const TYPE_MET={Striking:['kd','stop'],Wrestling:['td'],Grappling:['sub'],MMA:['td','sub','kd','stop']};
+const COUNTERS=['tdL','tdC','subF','subT','kdG','kdT','stG','stT'];
+const LADDER=['Seen','Drilled','Landed live','Landed on 3+'];
+const PALETTE=['#ff4d2e','#f5b301','#3fa7ff','#b67cff','#3ddc84','#ff7ab6','#7ad7d0'];
+const RULESETS=['MMA','BJJ / Grappling','Wrestling','Kickboxing / Muay Thai','Boxing'];
+const METHODS=['Submission','KO / TKO','Decision','Points','Advantage / Ref','DQ','Other'];
+const GRADES=['White belt','Grey belt','Yellow belt','Orange belt','Green belt','Blue belt','Purple belt','Brown belt','Black belt'];
+const DEFAULTS={version:1,sessions:[],techniques:[],partners:[],belts:[],comps:[],
+  settings:{disciplines:['MMA','Striking','Wrestling','BJJ'],types:['Technique','Drilling','Sparring','Open mat','Pads / Bag','S&C'],lastBackup:null}};
+
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const todayStr=()=>iso(new Date());
+const pd=s=>new Date(s+'T00:00:00');
+const addDays=(s,n)=>{const d=pd(s);d.setDate(d.getDate()+n);return iso(d)};
+const weekKey=s=>{const d=pd(s);d.setDate(d.getDate()-((d.getDay()+6)%7));return iso(d)};
+const fmtD=(s,o)=>pd(s).toLocaleDateString('en-AU',o||{weekday:'short',day:'numeric',month:'short'});
+const fmtLong=s=>fmtD(s,{day:'numeric',month:'short',year:'numeric'});
+const monthLbl=mk=>pd(mk+'-01').toLocaleDateString('en-AU',{month:'short'});
+const hrs=m=>String(Math.round((m||0)/6)/10);
+const byDate=(a,b)=>b.date.localeCompare(a.date)||(b.created||0)-(a.created||0);
+const uniq=a=>[...new Set(a)];
+const clone=o=>JSON.parse(JSON.stringify(o));
+const sum=(a,f)=>a.reduce((s,x)=>s+(+f(x)||0),0);
+
+/* ---------- storage ---------- */
+function migrate(d){
+  const o=Object.assign(clone(DEFAULTS),d||{});
+  for(const k of ['sessions','techniques','partners','belts','comps']) if(!Array.isArray(o[k])) o[k]=[];
+  o.settings=Object.assign(clone(DEFAULTS.settings),(d&&d.settings)||{});
+  return o;
+}
+function load(){try{const s=localStorage.getItem(KEY);if(s)return migrate(JSON.parse(s))}catch(e){}return clone(DEFAULTS)}
+let db=load();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){toast('Storage full — export a backup')}}
+const techById=id=>db.techniques.find(t=>t.id===id);
+const partnerById=id=>db.partners.find(p=>p.id===id);
+const pname=id=>(partnerById(id)||{}).name||'Unknown';
+const discColor=d=>{const i=db.settings.disciplines.indexOf(d);return PALETTE[(i<0?db.settings.disciplines.length:i)%PALETTE.length]};
+
+/* ---------- draft (the session being logged) ---------- */
+function newDraft(){
+  const d={id:null,date:todayStr(),discipline:db.settings.disciplines[0]||'MMA',type:db.settings.types[0]||'Technique',duration:60,techniques:[],sparring:[],note:''};
+  const sorted=[...db.sessions].sort(byDate), wd=new Date().getDay();
+  const ref=sorted.find(s=>pd(s.date).getDay()===wd)||sorted[0];
+  if(ref) Object.assign(d,{discipline:ref.discipline,type:ref.type,duration:ref.duration});
+  return d;
+}
+function loadDraft(){
+  try{const d=JSON.parse(localStorage.getItem(DKEY));
+    if(d&&(d.id||d.techniques.length||d.sparring.length||d.note||d.date===todayStr())) return d;
+  }catch(e){}
+  return newDraft();
+}
+let draft=loadDraft();
+const saveDraft=()=>{try{localStorage.setItem(DKEY,JSON.stringify(draft))}catch(e){}};
+function resetDraft(){draft=newDraft();localStorage.removeItem(DKEY)}
+function newSpar(){
+  const map={MMA:'MMA',Striking:'Striking',Wrestling:'Wrestling',BJJ:'Grappling'};
+  const type=map[draft.discipline]||'MMA';
+  const e={pid:'',type,rounds:3,roundLen:type==='Grappling'?5:3,video:false,strL:0,strA:0,landed:[]};
+  COUNTERS.forEach(k=>e[k]=0);return e;
+}
+function createTech(name,disc){
+  name=name.trim();
+  let t=db.techniques.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!t){t={id:uid(),name,discipline:disc,category:'',notes:'',video:'',created:Date.now()};db.techniques.push(t);save()}
+  return t;
+}
+
+/* ---------- derived stats ---------- */
+function techStats(){
+  const m={};const g=id=>m[id]||(m[id]={sessions:0,drilled:0,landed:0,partners:new Set(),first:null,last:null});
+  const touch=(x,d)=>{if(!x.first||d<x.first)x.first=d;if(!x.last||d>x.last)x.last=d};
+  for(const s of db.sessions){
+    for(const t of s.techniques||[]){const x=g(t.id);x.sessions++;if(t.mode==='drilled')x.drilled++;touch(x,s.date)}
+    for(const e of s.sparring||[])for(const id of e.landed||[]){const x=g(id);x.landed++;if(e.pid)x.partners.add(e.pid);touch(x,s.date)}
+  }
+  return m;
+}
+const level=x=>!x?0:x.partners.size>=3?3:x.landed>0?2:x.drilled>0?1:0;
+function entries(){const o=[];for(const s of db.sessions)for(const e of s.sparring||[])o.push({...e,date:s.date});return o.sort((a,b)=>a.date.localeCompare(b.date))}
+function weekStreak(){
+  const set=new Set(db.sessions.map(s=>weekKey(s.date)));let wk=weekKey(todayStr());
+  if(!set.has(wk))wk=addDays(wk,-7);let n=0;while(set.has(wk)){n++;wk=addDays(wk,-7)}return n;
+}
+function lastMonths(n){const o=[],d=new Date();for(let i=n-1;i>=0;i--){const x=new Date(d.getFullYear(),d.getMonth()-i,1);o.push(`${x.getFullYear()}-${pad(x.getMonth()+1)}`)}return o}
+const backupDue=()=>db.sessions.length>=5&&(!db.settings.lastBackup||Date.now()-db.settings.lastBackup>14*864e5);
+
+/* ---------- chart ---------- */
+function niceMax(m){if(m<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(m))),f=m/p;return (f<=1?1:f<=2?2:f<=5?5:10)*p}
+const fmtN=v=>Number.isInteger(v)||Math.abs(v)>=10?Math.round(v):v.toFixed(1);
+function bars(labels,series,stacked){
+  const W=340,H=160,L=30,B=22,T=10,n=labels.length;let max=0;
+  for(let i=0;i<n;i++){if(stacked)max=Math.max(max,series.reduce((a,s)=>a+(s.values[i]||0),0));else series.forEach(s=>max=Math.max(max,s.values[i]||0))}
+  max=niceMax(max);const ih=H-B-T,slot=(W-L)/n,y=v=>T+ih-(v/max)*ih;
+  const bw=stacked?Math.min(20,slot*.62):Math.min(12,(slot*.8-2*(series.length-1))/series.length);
+  let g='';
+  [0,.5,1].forEach(f=>{const yy=y(max*f);g+=`<line x1="${L}" x2="${W}" y1="${yy}" y2="${yy}" stroke="#2c2c35"/><text x="${L-6}" y="${yy+4}" text-anchor="end" font-size="10" fill="#77746d">${fmtN(max*f)}</text>`});
+  const k=Math.ceil(n/7);
+  for(let i=0;i<n;i++){const cx=L+slot*i+slot/2;
+    if(stacked){let acc=0;series.forEach(s=>{const v=s.values[i]||0;if(!v)return;const y0=y(acc),y1=y(acc+v);g+=`<rect x="${cx-bw/2}" y="${y1}" width="${bw}" height="${Math.max(0,y0-y1)}" fill="${s.color}"/>`;acc+=v})}
+    else{const tot=bw*series.length+2*(series.length-1);series.forEach((s,j)=>{const v=s.values[i]||0;g+=`<rect x="${cx-tot/2+j*(bw+2)}" y="${y(v)}" width="${bw}" height="${Math.max(0,y(0)-y(v))}" fill="${s.color}" rx="2"/>`})}
+    if((n-1-i)%k===0)g+=`<text x="${cx}" y="${H-6}" text-anchor="middle" font-size="10" fill="#77746d">${esc(labels[i])}</text>`;
+  }
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+
+/* ---------- UI bits ---------- */
+const chip=(label,on,act,arg,cls='')=>`<button class="chip ${cls}${on?' on':''}" data-act="${act}" data-arg="${esc(arg)}">${label}</button>`;
+const sec=t=>`<div class="sec h">${t}</div>`;
+const stepBtn=(act,label,arg='')=>`<button class="sb" data-act="${act}" data-arg="${arg}">${label}</button>`;
+const kpi=(v,k)=>`<div class="kpi"><div class="h v">${v}</div><div class="k">${k}</div></div>`;
+const pips=(l,cls='')=>`<div class="pips ${cls}">${[0,1,2,3].map(i=>`<span class="${i<=l?'f':''}"></span>`).join('')}</div>`;
+function sparLine(e,noName){
+  const parts=TYPE_MET[e.type].map(k=>{const m=MET[k];return `${m[5]} <b>${e[m[1]]||0}</b>–<i>${e[m[2]]||0}</i>`});
+  if(e.video)parts.push(`Str <b>${e.strL||0}</b>–<i>${e.strA||0}</i> (video)`);
+  return `${noName?'':`vs <span class="h">${esc(pname(e.pid))}</span> · `}${e.rounds}×${e.roundLen}m ${esc(e.type)} · ${parts.join(' · ')}`;
+}
+
+/* ---------- LOG ---------- */
+function vLog(){
+  const d=draft,t=todayStr(),y=addDays(t,-1);let h='';
+  if(backupDue()&&!d.id) h+=`<button class="banner" data-act="settings">${db.settings.lastBackup?'No backup in 2+ weeks':'Not backed up yet'} — tap to export your log →</button>`;
+  const last=db.sessions.length;
+  h+=`<div class="row between"><h1 class="h title">${d.id?'Edit session':'Log session'}</h1>${d.id?`<button class="btn sm ghost" data-act="cancelEdit">Cancel</button>`:last?`<button class="btn sm ghost" data-act="repeatLast">↻ Repeat last</button>`:''}</div>`;
+  h+=sec('Date')+`<div class="chips">${chip('Today',d.date===t,'setDate',t)}${chip('Yesterday',d.date===y,'setDate',y)}<input type="date" class="inp dateinp" data-f="date" value="${esc(d.date)}"></div>`;
+  h+=sec('Discipline')+`<div class="chips">${uniq([...db.settings.disciplines,d.discipline]).map(x=>chip(esc(x),d.discipline===x,'setDisc',x)).join('')}</div>`;
+  h+=sec('Session type')+`<div class="chips">${uniq([...db.settings.types,d.type]).map(x=>chip(esc(x),d.type===x,'setType',x)).join('')}</div>`;
+  h+=sec('Duration')+`<div class="chips">${[45,60,90,120].map(x=>chip(x+'m',+d.duration===x,'setDur',x)).join('')}<div class="stepper">${stepBtn('durStep','−',-15)}<span class="h num">${d.duration}m</span>${stepBtn('durStep','+',15)}</div></div>`;
+  h+=sec('Techniques<span class="hint">tap a chip to switch seen / drilled</span>');
+  h+=`<div class="chips">${d.techniques.map(x=>{const tc=techById(x.id);if(!tc)return'';const dr=x.mode==='drilled';
+    return `<span class="chip sm tchip${dr?' drilled':''}"><button class="cb" data-act="toggleMode" data-arg="${x.id}">${dr?'Drilled':'Seen'} · ${esc(tc.name)}</button><button class="x" data-act="rmTech" data-arg="${x.id}" aria-label="Remove">×</button></span>`}).join('')}</div>`;
+  h+=`<input class="inp${d.techniques.length?' mt':''}" id="techSearch" placeholder="Search or add a technique…" autocomplete="off" data-search="log"><div id="techSug" class="sug"></div>`;
+  h+=sec('Sparring');
+  d.sparring.forEach((e,i)=>h+=sparCard(e,i));
+  h+=`<button class="btn block outline" data-act="addSpar">+ Add sparring partner</button>`;
+  h+=sec('Note')+`<textarea class="inp" rows="2" data-f="note" placeholder="One line — tap the mic on your keyboard">${esc(d.note)}</textarea>`;
+  h+=`<div class="savebar"><button class="btn primary block big" data-act="saveSession">${d.id?'Save changes':'Log session'}</button></div>`;
+  return h;
+}
+function sparCard(e,i){
+  const opts=[...db.partners].sort((a,b)=>a.name.localeCompare(b.name)).map(p=>`<option value="${p.id}"${p.id===e.pid?' selected':''}>${esc(p.name)}</option>`).join('');
+  let h=`<div class="card spar"><div class="row between"><span class="h lbl">Partner ${i+1}</span><button class="x" data-act="rmSpar" data-arg="${i}" aria-label="Remove">×</button></div>`;
+  h+=e._new
+    ?`<div class="row mt"><input class="inp" id="np${i}" placeholder="Partner name" autocomplete="off"><button class="btn" data-act="addPartner" data-arg="${i}">Add</button><button class="btn ghost" data-act="cancelNP" data-arg="${i}">✕</button></div>`
+    :`<select class="inp mt" data-sp="${i}" data-k="pid"><option value="">Choose partner…</option>${opts}<option value="__new">+ New partner</option></select>`;
+  h+=`<div class="chips mt">${SPAR_TYPES.map(t=>chip(t,e.type===t,'sparType',i+'|'+t,'sm')).join('')}</div>`;
+  h+=`<div class="row wrap mt"><div class="stepper"><span class="lbl">Rounds</span>${stepBtn('spRounds','−',i+'|-1')}<span class="h num">${e.rounds}</span>${stepBtn('spRounds','+',i+'|1')}</div><div class="chips">${[2,3,5].map(m=>chip(m+'m',e.roundLen===m,'spLen',i+'|'+m,'sm')).join('')}</div></div>`;
+  h+=`<div class="mets">${TYPE_MET[e.type].map(k=>metBlock(e,i,k)).join('')}</div>`;
+  const pool=uniq([...draft.techniques.map(x=>x.id),...e.landed]).filter(techById);
+  h+=`<div class="lbl mt">Techniques landed live</div>`;
+  if(pool.length)h+=`<div class="chips mt">${pool.map(id=>chip(esc(techById(id).name),e.landed.includes(id),'toggleLanded',i+'|'+id,'sm')).join('')}</div>`;
+  h+=`<input class="inp mt" placeholder="Search library…" data-search="landed" data-i="${i}" autocomplete="off"><div class="sug" id="landSug${i}"></div>`;
+  if(e.type==='Striking'||e.type==='MMA'){
+    h+=`<label class="switch mt"><input type="checkbox" data-sp="${i}" data-k="video"${e.video?' checked':''}> Video-verified striking (counted from footage)</label>`;
+    if(e.video)h+=`<div class="mets">${metBlock(e,i,'vid')}</div>`;
+  }
+  return h+'</div>';
+}
+function metBlock(e,i,k){
+  const [lab,a,b,la,lb]=MET[k],vid=k==='vid';
+  const c=(key,l,cls)=>`<div class="cnt ${cls}"><span class="cl">${l}</span>${vid
+    ?`<input class="inp vin" type="number" inputmode="numeric" min="0" data-sp="${i}" data-k="${key}" value="${e[key]||0}">`
+    :`<div class="cr"><button class="sb" data-act="cnt" data-arg="${i}|${key}|-1">−</button><span class="h cv">${e[key]||0}</span><button class="sb" data-act="cnt" data-arg="${i}|${key}|1">+</button></div>`}</div>`;
+  return `<div class="met"><div class="lbl">${lab}</div><div class="pair">${c(a,la,'for')}${c(b,lb,'against')}</div></div>`;
+}
+function renderSug(t){
+  const q=t.value.trim(),isLog=t.dataset.search==='log',i=t.dataset.i;
+  const box=isLog?$('#techSug'):$('#landSug'+i);if(!box)return;
+  if(!q){box.innerHTML='';return}
+  const ql=q.toLowerCase(),excl=isLog?draft.techniques.map(x=>x.id):draft.sparring[+i].landed;
+  const res=db.techniques.filter(x=>x.name.toLowerCase().includes(ql)&&!excl.includes(x.id))
+    .sort((a,b)=>a.name.toLowerCase().indexOf(ql)-b.name.toLowerCase().indexOf(ql)||a.name.localeCompare(b.name)).slice(0,6);
+  const exact=db.techniques.some(x=>x.name.toLowerCase()===ql);
+  const enc=encodeURIComponent(q);
+  box.innerHTML=res.map(x=>`<button data-act="${isLog?'pickTech':'pickLanded'}" data-arg="${isLog?x.id:i+'|'+x.id}">${esc(x.name)}<span class="m">${esc(x.discipline)}</span></button>`).join('')
+    +(exact?'':`<button class="new" data-act="${isLog?'newTech':'newLanded'}" data-arg="${isLog?enc:i+'|'+enc}">+ Add “${esc(q)}” to library</button>`);
+}
+function addDraftTech(id){
+  if(!draft.techniques.some(x=>x.id===id))draft.techniques.push({id,mode:/drill/i.test(draft.type)?'drilled':'seen'});
+  sd();setTimeout(()=>{const s=$('#techSearch');if(s)s.focus()},0);
+}
+function saveSession(){
+  const d=draft;
+  for(let i=0;i<d.sparring.length;i++)if(!d.sparring[i].pid){toast(`Pick a partner for sparring entry ${i+1}`);return}
+  const s={id:d.id||uid(),created:d.created||Date.now(),date:d.date||todayStr(),discipline:d.discipline,type:d.type,duration:+d.duration||0,
+    techniques:d.techniques.filter(x=>techById(x.id)),
+    sparring:d.sparring.map(e=>{const o=clone(e);delete o._new;
+      const keep=new Set(TYPE_MET[o.type].flatMap(k=>[MET[k][1],MET[k][2]]));COUNTERS.forEach(k=>{if(!keep.has(k))o[k]=0});
+      if(!(o.type==='Striking'||o.type==='MMA'))o.video=false;if(!o.video){o.strL=0;o.strA=0}
+      o.landed=o.landed.filter(techById);return o}),
+    note:(d.note||'').trim()};
+  const idx=db.sessions.findIndex(x=>x.id===s.id);
+  if(idx>=0)db.sessions[idx]=s;else db.sessions.push(s);
+  save();requestPersist();const edited=!!d.id;resetDraft();
+  toast(edited?'Saved':'Session logged');tab='hist';ui.open=null;render(true);
+}
+
+/* ---------- HISTORY ---------- */
+function vHist(){
+  let h=`<h1 class="h title">History</h1>`;
+  if(!db.sessions.length)return h+`<div class="empty">No sessions yet.<br>Log your first one from the Log tab.</div>`;
+  const sorted=[...db.sessions].sort(byDate);let cur='';
+  for(const s of sorted){const wk=weekKey(s.date);
+    if(wk!==cur){cur=wk;h+=`<div class="wkh h"><span>Week of ${fmtD(wk,{day:'numeric',month:'short'})}</span><span>${hrs(sum(sorted.filter(x=>weekKey(x.date)===wk),x=>x.duration))}h</span></div>`}
+    h+=sessRow(s);
+  }
+  return h;
+}
+function sessRow(s){
+  const open=ui.open===s.id,tn=(s.techniques||[]).map(x=>techById(x.id)).filter(Boolean);
+  let h=`<div class="srow"><button class="sbtn" data-act="openSess" data-arg="${s.id}"><div class="top"><span class="dot" style="background:${discColor(s.discipline)}"></span><span class="h">${esc(s.discipline)}</span><span class="lbl">${esc(s.type)} · ${s.duration}m</span><span class="lbl" style="margin-left:auto">${fmtD(s.date)}</span></div>`;
+  if(tn.length)h+=`<div class="meta">${tn.slice(0,open?999:3).map(t=>esc(t.name)).join(', ')}${!open&&tn.length>3?` +${tn.length-3}`:''}</div>`;
+  (s.sparring||[]).forEach(e=>h+=`<div class="sline">${sparLine(e)}</div>`);
+  h+='</button>';
+  if(open){h+='<div class="sx">';
+    if(s.note)h+=`<div class="note">${esc(s.note)}</div>`;
+    (s.sparring||[]).forEach(e=>{const l=(e.landed||[]).map(techById).filter(Boolean);if(l.length)h+=`<div class="lbl">Landed on ${esc(pname(e.pid))}: ${l.map(t=>esc(t.name)).join(', ')}</div>`});
+    h+=`<div class="row mt"><button class="btn sm" data-act="editSess" data-arg="${s.id}">Edit</button><button class="btn sm danger" data-act="delSess" data-arg="${s.id}">Delete</button></div></div>`}
+  return h+'</div>';
+}
+
+/* ---------- LIBRARY ---------- */
+function vLib(){
+  const ts=techStats(),lc=[0,0,0,0];db.techniques.forEach(t=>lc[level(ts[t.id])]++);
+  const discs=uniq([...db.settings.disciplines,...db.techniques.map(t=>t.discipline)]);
+  return `<div class="row between"><h1 class="h title">Library</h1><button class="btn sm" data-act="techSheet">+ New</button></div>
+  ${db.techniques.length?`<div class="card mt"><div class="ladder">${LADDER.map((l,i)=>`<div><div class="h v">${lc[i]}</div><div class="k">${l}</div></div>`).join('')}</div></div>`:''}
+  <input class="inp" placeholder="Search techniques" data-lq value="${esc(ui.libQuery)}">
+  <div class="chips mt">${['All',...discs].map(x=>chip(esc(x),ui.libFilter===x,'libFilter',x,'sm')).join('')}</div>
+  <div id="libList" class="mt">${libList()}</div>`;
+}
+function libList(){
+  if(!db.techniques.length)return `<div class="empty">Your library builds itself as you log techniques.<br>Or add one with + New.</div>`;
+  const ts=techStats(),q=ui.libQuery.trim().toLowerCase();
+  const list=db.techniques.filter(t=>(ui.libFilter==='All'||t.discipline===ui.libFilter)&&(!q||t.name.toLowerCase().includes(q)||(t.category||'').toLowerCase().includes(q)))
+    .map(t=>({t,s:ts[t.id],l:level(ts[t.id])})).sort((a,b)=>b.l-a.l||a.t.name.localeCompare(b.t.name));
+  if(!list.length)return `<div class="empty">No matches.</div>`;
+  return list.map(({t,s,l})=>`<button class="trow" data-act="techSheet" data-arg="${t.id}"><div><div>${esc(t.name)}</div><div class="s">${esc(t.discipline)}${t.category?' · '+esc(t.category):''}${s&&s.last?' · last '+fmtD(s.last,{day:'numeric',month:'short'}):''}</div></div><div class="ladcol">${pips(l)}<div class="s">${LADDER[l]}</div></div></button>`).join('');
+}
+function techSheet(id){
+  const t=id?techById(id):{name:'',discipline:draft.discipline||db.settings.disciplines[0],category:'',notes:'',video:''};if(!t)return;
+  const s=id?techStats()[id]:null,l=level(s);
+  const cats=uniq(db.techniques.map(x=>x.category).filter(Boolean));
+  let st='';
+  if(id){const names=s?[...s.partners].map(pname):[];
+    const next=['Next: drill it','Next: land it in sparring',`Next: land it on ${3-names.length} more partner${3-names.length===1?'':'s'}`,'Top of the ladder'][l];
+    st=`<div class="card stats">${pips(l,'big')}<p class="h" style="margin-top:10px">${LADDER[l]} <span class="lbl" style="text-transform:none;letter-spacing:0;font-weight:400">· ${next}</span></p>
+    ${s?`<p>In ${s.sessions} session${s.sessions===1?'':'s'} · drilled ${s.drilled}×</p><p>Landed live ${s.landed}× on ${names.length} partner${names.length===1?'':'s'}${names.length?': '+names.map(esc).join(', '):''}</p><p class="lbl">First logged ${fmtLong(s.first)} · last ${fmtLong(s.last)}</p>`:'<p class="lbl">Not logged in a session yet.</p>'}</div>`}
+  openSheet(`<form data-form="tech" data-id="${id||''}"><h2 class="h title">${id?esc(t.name):'New technique'}</h2>${st}
+  <div class="field"><label>Name</label><input class="inp" name="name" value="${esc(t.name)}" required autocomplete="off"></div>
+  <div class="pair"><div class="field"><label>Discipline</label><select class="inp" name="discipline">${uniq([...db.settings.disciplines,t.discipline]).map(x=>`<option${x===t.discipline?' selected':''}>${esc(x)}</option>`).join('')}</select></div>
+  <div class="field"><label>Category</label><input class="inp" name="category" list="dl-cat" value="${esc(t.category)}" placeholder="e.g. Takedown"></div></div>
+  <div class="field"><label>Video link${t.video?` · <a href="${esc(t.video)}" target="_blank" rel="noopener" style="color:var(--accent)">open</a>`:''}</label><input class="inp" name="video" type="url" value="${esc(t.video)}" placeholder="https://"></div>
+  <div class="field"><label>Notes</label><textarea class="inp" name="notes" rows="3" placeholder="Key details, setups, common mistakes">${esc(t.notes)}</textarea></div>
+  <button class="btn primary block big">Save</button>${id?`<button type="button" class="btn danger block mt" data-act="delTech" data-arg="${id}">Delete technique</button>`:''}
+  <datalist id="dl-cat">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist></form>`);
+}
+
+/* ---------- STATS ---------- */
+function vStats(){
+  let h=`<h1 class="h title">Stats</h1>`;
+  if(!db.sessions.length)return h+`<div class="empty">Log a few sessions and your trends show up here.</div>`;
+  const t=todayStr(),wk=weekKey(t),s30=db.sessions.filter(s=>s.date>=addDays(t,-29));
+  h+=`<div class="kpis">${kpi(hrs(sum(db.sessions.filter(s=>weekKey(s.date)===wk),s=>s.duration))+'h','Mat time this week')}${kpi(s30.length,'Sessions · 30 days')}${kpi(weekStreak(),'Week streak')}${kpi(sum(s30,s=>sum(s.sparring||[],e=>e.rounds)),'Sparring rounds · 30d')}</div>`;
+  const weeks=[];for(let i=11;i>=0;i--)weeks.push(addDays(wk,-7*i));
+  const discs=uniq([...db.settings.disciplines,...db.sessions.map(s=>s.discipline)]);
+  const series=discs.map(d=>({name:d,color:discColor(d),values:weeks.map(w=>sum(db.sessions.filter(s=>s.discipline===d&&weekKey(s.date)===w),s=>s.duration)/60)})).filter(s=>s.values.some(v=>v));
+  h+=sec('Mat hours · 12 weeks')+`<div class="card">${bars(weeks.map(w=>fmtD(w,{day:'numeric',month:'numeric'})),series,true)}<div class="legend">${series.map(s=>`<span style="--c:${s.color}">${esc(s.name)}</span>`).join('')}</div></div>`;
+  const all=entries();
+  if(all.length){
+    const ft=ui.sparType,es=all.filter(e=>ft==='All'||e.type===ft);
+    const opts=ft==='All'?['td','sub','kd','stop']:TYPE_MET[ft];if(!opts.includes(ui.metric))ui.metric=opts[0];
+    const [,a,b,la,lb]=MET[ui.metric],months=lastMonths(6);
+    const agg=months.map(m=>{const x=es.filter(e=>e.date.slice(0,7)===m);return {r:sum(x,e=>e.rounds),a:sum(x,e=>e[a]),b:sum(x,e=>e[b])}});
+    const net=(o)=>o.r?((o.a-o.b)/o.r*10):null;
+    const cellNet=o=>{const v=net(o);return v===null?'–':`<span class="${v>0?'pos':v<0?'neg':''}">${v>0?'+':''}${v.toFixed(1)}</span>`};
+    const tot={r:sum(es,e=>e.rounds),a:sum(es,e=>e[a]),b:sum(es,e=>e[b])};
+    h+=sec('Sparring')+`<div class="card"><div class="chips">${['All',...SPAR_TYPES].map(x=>chip(x,ft===x,'sparFilter',x,'sm')).join('')}</div>
+    <div class="chips mt">${opts.map(k=>chip(MET[k][0],ui.metric===k,'sparMetric',k,'sm')).join('')}</div>
+    <div class="mt">${bars(months.map(monthLbl),[{color:'#3ddc84',values:agg.map(o=>o.a)},{color:'#ff6b5a',values:agg.map(o=>o.b)}],false)}</div>
+    <div class="legend"><span style="--c:#3ddc84">${la}</span><span style="--c:#ff6b5a">${lb}</span></div>
+    <table class="t"><tr><th>Month</th><th>Rds</th><th>${la}</th><th>${lb}</th><th>Net /10 rds</th></tr>
+    ${months.map((m,i)=>`<tr><td>${monthLbl(m)}</td><td>${agg[i].r}</td><td>${agg[i].a}</td><td>${agg[i].b}</td><td>${cellNet(agg[i])}</td></tr>`).join('')}
+    <tr><td><b>All time</b></td><td>${tot.r}</td><td>${tot.a}</td><td>${tot.b}</td><td>${cellNet(tot)}</td></tr></table></div>`;
+    const byP={};
+    all.forEach(e=>{if(!e.pid)return;const p=byP[e.pid]||(byP[e.pid]={n:0,r:0,last:''});p.n++;p.r+=+e.rounds||0;COUNTERS.forEach(k=>p[k]=(p[k]||0)+(e[k]||0));if(e.date>p.last)p.last=e.date});
+    const pc=(p,x,y,lab)=>(p[x]||p[y])?`${lab} <span class="${p[x]>p[y]?'pos':p[x]<p[y]?'neg':''}">${p[x]}–${p[y]}</span>`:'';
+    h+=sec('Partners · head-to-head')+Object.entries(byP).sort((x,y)=>y[1].last.localeCompare(x[1].last)).map(([id,p])=>`<button class="trow" data-act="partnerSheet" data-arg="${id}"><div><div class="h">${esc(pname(id))}</div><div class="s">${p.n} session${p.n===1?'':'s'} · ${p.r} rds · last ${fmtD(p.last,{day:'numeric',month:'short'})}</div></div><div class="s" style="text-align:right">${[pc(p,'tdL','tdC','TD'),pc(p,'subF','subT','Sub'),pc(p,'kdG','kdT','KD')].filter(Boolean).join('<br>')||'—'}</div></button>`).join('');
+    const vids=all.filter(e=>e.video&&+e.rounds);
+    if(vids.length){const lv=vids.slice(-12);
+      h+=sec('Video-verified striking · per round')+`<div class="card">${bars(lv.map(e=>fmtD(e.date,{day:'numeric',month:'numeric'})),[{color:'#3ddc84',values:lv.map(e=>e.strL/e.rounds)},{color:'#ff6b5a',values:lv.map(e=>e.strA/e.rounds)}],false)}<div class="legend"><span style="--c:#3ddc84">Landed / rd</span><span style="--c:#ff6b5a">Absorbed / rd</span></div>
+      <table class="t"><tr><th>Date</th><th>Partner</th><th>Rds</th><th>L/rd</th><th>A/rd</th></tr>${lv.slice(-6).reverse().map(e=>`<tr><td>${fmtD(e.date,{day:'numeric',month:'short'})}</td><td>${esc(pname(e.pid))}</td><td>${e.rounds}</td><td>${(e.strL/e.rounds).toFixed(1)}</td><td>${(e.strA/e.rounds).toFixed(1)}</td></tr>`).join('')}</table></div>`}
+  }
+  return h;
+}
+function partnerSheet(id){
+  const p=partnerById(id);if(!p)return;
+  const es=entries().filter(e=>e.pid===id).reverse(),months=uniq(es.map(e=>e.date.slice(0,7))).slice(0,8);
+  const cell=(x,a,b)=>{const v=sum(x,e=>e[a]),w=sum(x,e=>e[b]);return `<span class="${v>w?'pos':v<w?'neg':''}">${v}–${w}</span>`};
+  const row=(lab,x)=>`<tr><td>${lab}</td><td>${sum(x,e=>e.rounds)}</td><td>${cell(x,'tdL','tdC')}</td><td>${cell(x,'subF','subT')}</td><td>${cell(x,'kdG','kdT')}</td></tr>`;
+  let h=`<h2 class="h title">${esc(p.name)}</h2><form data-form="partner" data-id="${id}"><div class="row"><input class="inp" name="name" value="${esc(p.name)}" autocomplete="off"><button class="btn">Rename</button></div></form>`;
+  h+=`<div class="kpis">${kpi(es.length,'Sessions')}${kpi(sum(es,e=>e.rounds),'Rounds')}</div>`;
+  if(es.length){
+    h+=sec('Head-to-head by month')+`<div class="card"><table class="t"><tr><th>Month</th><th>Rds</th><th>TD</th><th>Sub</th><th>KD</th></tr>${months.map(m=>row(pd(m+'-01').toLocaleDateString('en-AU',{month:'short',year:'2-digit'}),es.filter(e=>e.date.slice(0,7)===m))).join('')}${row('<b>All time</b>',es)}</table></div>`;
+    h+=sec('Recent')+es.slice(0,8).map(e=>`<div class="card"><div class="lbl">${fmtD(e.date)}</div><div class="sline">${sparLine(e,true)}</div></div>`).join('');
+  } else h+=`<button class="btn danger block mt" data-act="delPartner" data-arg="${id}">Delete partner</button>`;
+  openSheet(h);
+}
+
+/* ---------- RECORD ---------- */
+function vRec(){
+  return `<h1 class="h title">Record</h1><div class="seg"><button class="${ui.rec==='belts'?'on':''}" data-act="recSeg" data-arg="belts">Grades</button><button class="${ui.rec==='comps'?'on':''}" data-act="recSeg" data-arg="comps">Competition</button></div>`+(ui.rec==='belts'?vBelts():vComps());
+}
+function vBelts(){
+  let h=`<button class="btn block primary" data-act="beltSheet">+ Add grade / promotion</button>`;
+  const g={};db.belts.forEach(b=>(g[b.discipline]=g[b.discipline]||[]).push(b));
+  const ds=Object.keys(g);
+  if(!ds.length)return h+`<div class="empty">Add your current grade in each discipline — e.g. BJJ, white belt, 2 stripes.<br>Time in grade and mat hours since promotion are tracked for you.</div>`;
+  ds.forEach(d=>{const list=g[d].sort((a,b)=>b.date.localeCompare(a.date)),cur=list[0];
+    const months=Math.max(0,(Date.now()-pd(cur.date))/(30.44*864e5));
+    const mins=sum(db.sessions.filter(s=>s.discipline===d&&s.date>=cur.date),s=>s.duration);
+    h+=`<div class="card mt"><div class="row between"><span class="h lbl">${esc(d)}</span><button class="btn sm ghost" data-act="beltSheet" data-arg="${cur.id}">Edit</button></div><div class="h grade">${esc(cur.grade)}</div><div class="lbl">Since ${fmtLong(cur.date)} · ${months.toFixed(1)} months · ${hrs(mins)} ${esc(d)} mat hours</div>
+    ${list.slice(1).map(b=>`<button class="hrow" data-act="beltSheet" data-arg="${b.id}"><span>${esc(b.grade)}</span><span class="lbl">${fmtLong(b.date)}</span></button>`).join('')}</div>`});
+  return h;
+}
+function beltSheet(id){
+  const b=id?db.belts.find(x=>x.id===id):{discipline:(db.belts[0]||{}).discipline||'BJJ',grade:'',date:todayStr(),notes:''};if(!b)return;
+  openSheet(`<form data-form="belt" data-id="${id||''}"><h2 class="h title">${id?'Edit grade':'New grade'}</h2>
+  <div class="field"><label>Discipline</label><input class="inp" name="discipline" list="dl-disc" value="${esc(b.discipline)}" required autocomplete="off"></div>
+  <div class="field"><label>Grade</label><input class="inp" name="grade" list="dl-grade" value="${esc(b.grade)}" placeholder="e.g. Blue belt, 2 stripes" required autocomplete="off"></div>
+  <div class="field"><label>Date awarded</label><input class="inp dateinp" type="date" name="date" value="${esc(b.date)}" required></div>
+  <div class="field"><label>Notes</label><input class="inp" name="notes" value="${esc(b.notes||'')}" placeholder="Coach, gym…"></div>
+  <button class="btn primary block big">Save</button>${id?`<button type="button" class="btn danger block mt" data-act="delBelt" data-arg="${id}">Delete</button>`:''}
+  <datalist id="dl-disc">${uniq([...db.settings.disciplines,...db.belts.map(x=>x.discipline)]).map(x=>`<option value="${esc(x)}">`).join('')}</datalist>
+  <datalist id="dl-grade">${GRADES.map(x=>`<option value="${x}">`).join('')}</datalist></form>`);
+}
+function vComps(){
+  let h=`<button class="btn block primary" data-act="compSheet">+ Add competition</button>`;
+  if(!db.comps.length)return h+`<div class="empty">Log events and matches here.<br>Your record by ruleset and method is worked out automatically.</div>`;
+  const ms=db.comps.flatMap(c=>(c.matches||[]).map(m=>({...m,rules:c.rules})));
+  const rec=x=>{const w=x.filter(m=>m.result==='W').length,l=x.filter(m=>m.result==='L').length,d=x.filter(m=>m.result==='D').length;return `${w}–${l}${d?'–'+d:''}`};
+  const rules=RULESETS.filter(r=>ms.some(m=>m.rules===r));
+  const by=res=>{const c={};ms.filter(m=>m.result===res).forEach(m=>c[m.method]=(c[m.method]||0)+1);return Object.entries(c).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${esc(k)} ${v}`).join(' · ')||'—'};
+  h+=`<div class="card mt"><div class="lbl">Career record · W–L${ms.some(m=>m.result==='D')?'–D':''}</div><div class="h grade">${rec(ms)}</div>${rules.length>1?`<div class="lbl">${rules.map(r=>`${esc(r)} ${rec(ms.filter(m=>m.rules===r))}`).join(' · ')}</div>`:''}<div class="lbl mt"><span class="pos">Wins</span> · ${by('W')}</div><div class="lbl"><span class="neg">Losses</span> · ${by('L')}</div></div>`;
+  [...db.comps].sort(byDate).forEach(c=>{h+=`<button class="card cbtn" data-act="compSheet" data-arg="${c.id}"><div class="row between"><span class="h">${esc(c.event)}</span><span class="lbl">${fmtLong(c.date)}</span></div><div class="lbl">${esc(c.rules)}${c.division?' · '+esc(c.division):''} · ${rec(c.matches||[])}</div>${(c.matches||[]).map(m=>`<div class="sline"><span class="res ${m.result}">${m.result}</span>vs ${esc(m.opponent||'Unknown')} — ${esc(m.method)}${m.round?' · R'+esc(m.round):''}</div>`).join('')}</button>`});
+  return h;
+}
+let compDraft=null;
+const newMatch=()=>({opponent:'',result:'W',method:'Decision',round:'',notes:''});
+function compSheet(id){const c=id?db.comps.find(x=>x.id===id):null;compDraft=c?clone(c):{id:'',event:'',date:todayStr(),rules:'MMA',division:'',matches:[newMatch()]};renderCompSheet()}
+function renderCompSheet(){
+  const c=compDraft;
+  openSheet(`<h2 class="h title">${c.id?'Edit competition':'New competition'}</h2>
+  <div class="field"><label>Event</label><input class="inp" data-c="event" value="${esc(c.event)}" placeholder="Event name" autocomplete="off"></div>
+  <div class="pair"><div class="field"><label>Date</label><input class="inp dateinp" type="date" data-c="date" value="${esc(c.date)}"></div><div class="field"><label>Ruleset</label><select class="inp" data-c="rules">${RULESETS.map(r=>`<option${r===c.rules?' selected':''}>${r}</option>`).join('')}</select></div></div>
+  <div class="field"><label>Division / weight</label><input class="inp" data-c="division" value="${esc(c.division)}" placeholder="e.g. Amateur 70 kg" autocomplete="off"></div>
+  <div class="sec h">Matches</div>
+  ${c.matches.map((m,i)=>`<div class="card"><div class="row between"><span class="h lbl">Match ${i+1}</span>${c.matches.length>1?`<button class="x" data-act="rmMatch" data-arg="${i}">×</button>`:''}</div>
+    <input class="inp mt" data-cm="${i}|opponent" value="${esc(m.opponent)}" placeholder="Opponent" autocomplete="off">
+    <div class="chips mt">${['W','L','D'].map(r=>chip({W:'Win',L:'Loss',D:'Draw'}[r],m.result===r,'cmRes',i+'|'+r,'sm')).join('')}</div>
+    <div class="pair mt"><select class="inp" data-cm="${i}|method">${METHODS.map(x=>`<option${x===m.method?' selected':''}>${x}</option>`).join('')}</select><input class="inp" data-cm="${i}|round" value="${esc(m.round)}" placeholder="Round" inputmode="numeric"></div>
+    <input class="inp mt" data-cm="${i}|notes" value="${esc(m.notes)}" placeholder="Notes" autocomplete="off"></div>`).join('')}
+  <button class="btn outline block" data-act="addMatch">+ Add match</button>
+  <button class="btn primary block big mt" data-act="saveComp">Save</button>
+  ${c.id?`<button class="btn danger block mt" data-act="delComp" data-arg="${c.id}">Delete</button>`:''}`);
+}
+
+/* ---------- SETTINGS / BACKUP ---------- */
+function settingsSheet(){
+  const lb=db.settings.lastBackup;
+  openSheet(`<h2 class="h title">Settings</h2>
+  <div class="card"><div class="h lbl">Backup</div><p class="lbl">Your log lives only on this phone. Export regularly and keep the file in Google Drive or email it to yourself.</p>
+  <p style="margin:8px 0 12px">Last backup: <b>${lb?fmtLong(iso(new Date(lb))):'never'}</b></p>
+  <div class="row wrap"><button class="btn primary" data-act="export">Export backup</button><label class="btn">Import<input type="file" id="importFile" accept="application/json,.json" hidden></label></div></div>
+  ${deferredPrompt?`<button class="btn block mt" data-act="install" style="margin-bottom:10px">Install app</button>`:''}
+  <form class="card" data-form="settings"><div class="h lbl">Disciplines</div><textarea class="inp mt" name="disciplines" rows="2">${esc(db.settings.disciplines.join(', '))}</textarea>
+  <div class="h lbl mt">Session types</div><textarea class="inp mt" name="types" rows="2">${esc(db.settings.types.join(', '))}</textarea>
+  <p class="lbl">Comma-separated. Renaming a discipline won’t rename it on old sessions.</p><button class="btn">Save lists</button></form>
+  <div class="card"><div class="h lbl">Partners</div>${db.partners.length?[...db.partners].sort((a,b)=>a.name.localeCompare(b.name)).map(p=>`<button class="hrow" data-act="partnerSheet" data-arg="${p.id}"><span>${esc(p.name)}</span><span class="lbl">›</span></button>`).join(''):'<p class="lbl">Partners you add while logging sparring appear here.</p>'}</div>
+  <p class="lbl">${db.sessions.length} sessions · ${db.techniques.length} techniques · storage ${persisted?'protected from automatic clearing':'not yet marked persistent'}</p>
+  <button class="btn danger block mt" data-act="wipe">Erase all data</button>`);
+}
+async function doExport(){
+  const name=`tape-backup-${todayStr()}.json`,blob=new Blob([JSON.stringify(db)],{type:'application/json'});
+  const file=new File([blob],name,{type:'application/json'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({files:[file],title:'Tape backup'});markBackup();return}catch(e){if(e.name==='AbortError')return}
+  }
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),3000);markBackup();
+}
+function markBackup(){db.settings.lastBackup=Date.now();save();toast('Backup exported');if(sheetOpen)settingsSheet();render()}
+async function doImport(file){
+  if(!file)return;
+  try{const d=JSON.parse(await file.text());if(!d||!Array.isArray(d.sessions))throw 0;
+    if(!confirm(`Replace current data (${db.sessions.length} sessions) with this backup (${d.sessions.length} sessions)?`))return;
+    db=migrate(d);save();resetDraft();closeSheet();render(true);toast('Backup restored');
+  }catch(e){toast('Not a valid Tape backup')}
+}
+
+/* ---------- sheet / toast ---------- */
+let sheetOpen=false;
+function openSheet(html){$('#sheet .body').innerHTML=html;if(!sheetOpen){$('#sheet .panel').scrollTop=0;history.pushState({sheet:1},'');sheetOpen=true}$('#sheet').classList.add('open');document.body.style.overflow='hidden'}
+function hideSheet(){sheetOpen=false;$('#sheet').classList.remove('open');document.body.style.overflow=''}
+function closeSheet(){if(sheetOpen){hideSheet();history.back()}}
+addEventListener('popstate',()=>{if(sheetOpen)hideSheet()});
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200)}
+
+/* ---------- render ---------- */
+let tab='log';
+const ui={libFilter:'All',libQuery:'',sparType:'All',metric:'td',rec:'belts',open:null};
+const VIEWS={log:vLog,hist:vHist,lib:vLib,stats:vStats,rec:vRec};
+function render(top){const y=scrollY,m=$('#main');m.innerHTML=VIEWS[tab]();m.classList.toggle('haspad',tab==='log');document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.arg===tab));scrollTo(0,top?0:y)}
+const sd=()=>{saveDraft();render()};
+const split=a=>a.split('|');
+
+/* ---------- actions ---------- */
+const A={
+  tab:a=>{tab=a;render(true)},
+  settings:()=>settingsSheet(),
+  closeSheet:()=>closeSheet(),
+  setDate:a=>{draft.date=a;sd()},
+  setDisc:a=>{draft.discipline=a;sd()},
+  setType:a=>{draft.type=a;sd()},
+  setDur:a=>{draft.duration=+a;sd()},
+  durStep:a=>{draft.duration=Math.min(480,Math.max(15,(+draft.duration||0)+ +a));sd()},
+  repeatLast:()=>{const l=[...db.sessions].sort(byDate)[0];if(!l)return;Object.assign(draft,{discipline:l.discipline,type:l.type,duration:l.duration,techniques:clone(l.techniques||[])});sd();toast('Copied last session')},
+  cancelEdit:()=>{resetDraft();render(true)},
+  toggleMode:a=>{const t=draft.techniques.find(x=>x.id===a);if(t){t.mode=t.mode==='drilled'?'seen':'drilled';sd()}},
+  rmTech:a=>{draft.techniques=draft.techniques.filter(x=>x.id!==a);sd()},
+  pickTech:a=>addDraftTech(a),
+  newTech:a=>addDraftTech(createTech(decodeURIComponent(a),draft.discipline).id),
+  addSpar:()=>{draft.sparring.push(newSpar());sd()},
+  rmSpar:a=>{draft.sparring.splice(+a,1);sd()},
+  sparType:a=>{const[i,t]=split(a),e=draft.sparring[+i];e.type=t;if(t==='Grappling'&&e.roundLen===3)e.roundLen=5;sd()},
+  spRounds:(a,b)=>{const[i,d]=split(a),e=draft.sparring[+i];e.rounds=Math.min(30,Math.max(1,e.rounds+ +d));b.parentElement.querySelector('.num').textContent=e.rounds;saveDraft()},
+  spLen:a=>{const[i,m]=split(a);draft.sparring[+i].roundLen=+m;sd()},
+  cnt:(a,b)=>{const[i,k,d]=split(a),e=draft.sparring[+i];e[k]=Math.max(0,(e[k]||0)+ +d);b.parentElement.querySelector('.cv').textContent=e[k];saveDraft()},
+  toggleLanded:a=>{const[i,id]=split(a),e=draft.sparring[+i];e.landed=e.landed.includes(id)?e.landed.filter(x=>x!==id):[...e.landed,id];sd()},
+  pickLanded:a=>{const[i,id]=split(a),e=draft.sparring[+i];if(!e.landed.includes(id))e.landed.push(id);sd()},
+  newLanded:a=>{const[i,q]=split(a);const t=createTech(decodeURIComponent(q),draft.discipline);const e=draft.sparring[+i];if(!e.landed.includes(t.id))e.landed.push(t.id);sd()},
+  addPartner:a=>{const i=+a,name=(($('#np'+i)||{}).value||'').trim();if(!name){toast('Type a name');return}
+    let p=db.partners.find(x=>x.name.toLowerCase()===name.toLowerCase());if(!p){p={id:uid(),name};db.partners.push(p);save()}
+    const e=draft.sparring[i];e.pid=p.id;delete e._new;sd()},
+  cancelNP:a=>{delete draft.sparring[+a]._new;sd()},
+  saveSession:()=>saveSession(),
+  openSess:a=>{ui.open=ui.open===a?null:a;render()},
+  editSess:a=>{const s=db.sessions.find(x=>x.id===a);if(!s)return;draft=clone(s);saveDraft();tab='log';render(true)},
+  delSess:a=>{if(!confirm('Delete this session?'))return;db.sessions=db.sessions.filter(x=>x.id!==a);save();render()},
+  libFilter:a=>{ui.libFilter=a;render()},
+  techSheet:a=>techSheet(a||null),
+  delTech:a=>{if(!confirm('Delete this technique? It is also removed from every logged session.'))return;
+    db.techniques=db.techniques.filter(t=>t.id!==a);
+    db.sessions.forEach(s=>{s.techniques=(s.techniques||[]).filter(t=>t.id!==a);(s.sparring||[]).forEach(e=>e.landed=(e.landed||[]).filter(x=>x!==a))});
+    draft.techniques=draft.techniques.filter(t=>t.id!==a);draft.sparring.forEach(e=>e.landed=e.landed.filter(x=>x!==a));
+    saveDraft();save();closeSheet();render()},
+  sparFilter:a=>{ui.sparType=a;render()},
+  sparMetric:a=>{ui.metric=a;render()},
+  partnerSheet:a=>partnerSheet(a),
+  delPartner:a=>{if(!confirm('Delete this partner?'))return;db.partners=db.partners.filter(p=>p.id!==a);save();closeSheet();render()},
+  recSeg:a=>{ui.rec=a;render()},
+  beltSheet:a=>beltSheet(a||null),
+  delBelt:a=>{if(!confirm('Delete this grade?'))return;db.belts=db.belts.filter(b=>b.id!==a);save();closeSheet();render()},
+  compSheet:a=>compSheet(a||null),
+  addMatch:()=>{compDraft.matches.push(newMatch());renderCompSheet()},
+  rmMatch:a=>{compDraft.matches.splice(+a,1);renderCompSheet()},
+  cmRes:a=>{const[i,r]=split(a);compDraft.matches[+i].result=r;renderCompSheet()},
+  saveComp:()=>{const c=compDraft;if(!c.event.trim()){toast('Add an event name');return}
+    c.event=c.event.trim();if(!c.id){c.id=uid();c.created=Date.now();db.comps.push(c)}else{const i=db.comps.findIndex(x=>x.id===c.id);db.comps[i]=c}
+    save();closeSheet();ui.rec='comps';render();toast('Saved')},
+  delComp:a=>{if(!confirm('Delete this competition?'))return;db.comps=db.comps.filter(c=>c.id!==a);save();closeSheet();render()},
+  export:()=>doExport(),
+  install:async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;closeSheet()},
+  wipe:()=>{if(!confirm('Erase ALL data on this phone? Export a backup first.'))return;if(!confirm('Really erase everything? This cannot be undone.'))return;
+    db=clone(DEFAULTS);save();resetDraft();closeSheet();tab='log';render(true);toast('Erased')}
+};
+const FORMS={
+  tech:(fd,f)=>{const name=(fd.get('name')||'').trim(),id=f.dataset.id;if(!name)return;
+    if(db.techniques.some(t=>t.name.toLowerCase()===name.toLowerCase()&&t.id!==id)){toast('Already in your library');return}
+    const data={name,discipline:fd.get('discipline'),category:(fd.get('category')||'').trim(),video:(fd.get('video')||'').trim(),notes:(fd.get('notes')||'').trim()};
+    if(id)Object.assign(techById(id),data);else db.techniques.push({id:uid(),created:Date.now(),...data});
+    save();closeSheet();render();toast('Saved')},
+  belt:(fd,f)=>{const id=f.dataset.id,data={discipline:fd.get('discipline').trim(),grade:fd.get('grade').trim(),date:fd.get('date'),notes:(fd.get('notes')||'').trim()};
+    if(!data.discipline||!data.grade||!data.date)return;
+    if(id)Object.assign(db.belts.find(b=>b.id===id),data);else db.belts.push({id:uid(),...data});
+    save();closeSheet();ui.rec='belts';render();toast('Saved')},
+  partner:(fd,f)=>{const id=f.dataset.id,name=(fd.get('name')||'').trim();if(!name)return;
+    if(db.partners.some(p=>p.id!==id&&p.name.toLowerCase()===name.toLowerCase())){toast('Name already used');return}
+    partnerById(id).name=name;save();partnerSheet(id);render();toast('Renamed')},
+  settings:fd=>{const l=k=>uniq(String(fd.get(k)||'').split(',').map(s=>s.trim()).filter(Boolean));const ds=l('disciplines'),ty=l('types');
+    if(!ds.length||!ty.length){toast('Keep at least one of each');return}
+    db.settings.disciplines=ds;db.settings.types=ty;save();render();toast('Saved')}
+};
+
+/* ---------- events ---------- */
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-act]');if(!b)return;const f=A[b.dataset.act];if(f){ev.preventDefault();f(b.dataset.arg,b,ev)}});
+document.addEventListener('input',ev=>{const t=ev.target,ds=t.dataset;
+  if(ds.f){draft[ds.f]=t.value;saveDraft();return}
+  if(ds.search){renderSug(t);return}
+  if(ds.lq!==undefined){ui.libQuery=t.value;$('#libList').innerHTML=libList();return}
+  if(ds.sp!==undefined&&t.type==='number'){draft.sparring[+ds.sp][ds.k]=Math.max(0,parseInt(t.value,10)||0);saveDraft();return}
+  if(ds.c){compDraft[ds.c]=t.value;return}
+  if(ds.cm){const[i,k]=split(ds.cm);compDraft.matches[+i][k]=t.value;return}
+});
+document.addEventListener('change',ev=>{const t=ev.target,ds=t.dataset;
+  if(ds.f==='date'){render();return}
+  if(t.id==='importFile'){doImport(t.files[0]);t.value='';return}
+  if(ds.sp!==undefined){const i=+ds.sp,e=draft.sparring[i];
+    if(ds.k==='pid'){if(t.value==='__new'){e._new=true;sd();setTimeout(()=>{const n=$('#np'+i);if(n)n.focus()},0)}else{e.pid=t.value;saveDraft()}}
+    else if(ds.k==='video'){e.video=t.checked;sd()}}
+});
+document.addEventListener('keydown',ev=>{if(ev.key!=='Enter')return;const t=ev.target;
+  if(t.id==='techSearch'){ev.preventDefault();const b=$('#techSug button');if(b)b.click()}
+  else if(t.dataset.search==='landed'){ev.preventDefault();const b=$('#landSug'+t.dataset.i+' button');if(b)b.click()}
+  else if(t.id&&t.id.startsWith('np')){ev.preventDefault();A.addPartner(t.id.slice(2))}
+});
+document.addEventListener('submit',ev=>{ev.preventDefault();const f=ev.target,h=FORMS[f.dataset.form];if(h)h(new FormData(f),f)});
+
+/* ---------- boot ---------- */
+let deferredPrompt=null,persisted=false;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e});
+if(navigator.storage&&navigator.storage.persisted)navigator.storage.persisted().then(p=>persisted=p);
+function requestPersist(){if(!persisted&&navigator.storage&&navigator.storage.persist)navigator.storage.persist().then(p=>persisted=p)}
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));
+render(true);
+</script>
+</body>
+</html>
